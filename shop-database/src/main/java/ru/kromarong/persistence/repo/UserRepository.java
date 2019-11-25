@@ -1,18 +1,15 @@
 package ru.kromarong.persistence.repo;
 
-
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import ru.kromarong.persistence.model.User;
 
 import java.util.Optional;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    boolean existsByUsername(String username);
+    Optional<User> findUserByUsername(String userName);
 
-    Optional<User> getUserByUsername(String username);
+    boolean existsUserByEmail(String email);
 
-    User findByUsername(String s);
+    Optional<User> findUserByEmail(String email);
 }
